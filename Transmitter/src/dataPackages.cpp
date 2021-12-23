@@ -11,10 +11,6 @@
         byte Joystick1yValueMapped;
         byte Joystick2xValueMapped;
         byte Joystick2yValueMapped;
-        byte Joystick3xValueMapped;
-        byte Joystick3yValueMapped;
-        byte Joystick4xValueMapped;
-        byte Joystick4yValueMapped;
     };
     TransmitterData TransmitterDataPackage; //Create a variable with the above structure
 
@@ -29,10 +25,6 @@ void dataPackagesUpdate() {
   TransmitterDataPackage.Joystick1yValueMapped = Joystick1yValueMapped;
   TransmitterDataPackage.Joystick2xValueMapped = Joystick2xValueMapped;
   TransmitterDataPackage.Joystick2yValueMapped = Joystick2yValueMapped;
-  TransmitterDataPackage.Joystick3xValueMapped = Joystick3xValueMapped;
-  TransmitterDataPackage.Joystick3yValueMapped = Joystick3yValueMapped;
-  TransmitterDataPackage.Joystick4xValueMapped = Joystick4xValueMapped;
-  TransmitterDataPackage.Joystick4yValueMapped = Joystick4yValueMapped;
 }
 
 
@@ -49,20 +41,6 @@ void dataPackagesPrint() {
   Serial.print(TransmitterDataPackage.Joystick2xValueMapped);
   Serial.print(" | Ym: ");
   Serial.println(TransmitterDataPackage.Joystick2yValueMapped);
-
-  Serial.println("-----------------------------------------");
-
-  Serial.print("J3 -------------------- ");
-  Serial.print("Xm: ");
-  Serial.print(TransmitterDataPackage.Joystick3xValueMapped);
-  Serial.print(" | Ym: ");
-  Serial.println(TransmitterDataPackage.Joystick3yValueMapped);
-
-  Serial.print("J4 -------------------- ");
-  Serial.print("Xm: ");
-  Serial.print(TransmitterDataPackage.Joystick4xValueMapped);
-  Serial.print(" | Ym: ");
-  Serial.println(TransmitterDataPackage.Joystick4yValueMapped);
 
   delay(1000);
 }

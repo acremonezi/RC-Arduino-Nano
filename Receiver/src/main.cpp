@@ -10,14 +10,16 @@ Date: 21/Dec/2021
 #include "radio.h"        // Radio Setup
 
 void setup() {
-  
+
+  Serial.begin(9600);     // Start Serial Communication 
   pinSetup();             // Pin I/O Mode Setup
   radioSetup();           // Radio Setup
-  
+
 }
 
 void loop() {
 
-  radioRun();             // Radio Start
+  //radioRun();             // Radio Start
+  radioTest();
 
 }

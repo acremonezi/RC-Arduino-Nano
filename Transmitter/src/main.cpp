@@ -9,23 +9,23 @@ Date: 21/Dec/2021
 #include "pinSetup.h"         // Pin I/O Mode Setup
 #include "joysticks.h"        // Joysticks Info
 #include "radio.h"            // Radio Setup
-#include "dataPackages.h"
-#include "display.h"
+//#include "dataPackages.h"
 
 void setup() {
 
   Serial.begin(9600);         // Start Serial Communication  
   pinSetup();                 // Pin I/O Mode Setup
   radioSetup();               // Radio Setup
-  displaySetup();             // Display Setup
-  
+
 }
 
 void loop() {
 
   joysticksRead();            // Read Joysticks Positions
-  radioRun();                 // Radio Start
+  //radioRun();                 // Radio Start
+  radioTest();
   //joysticksPrint();         // Print Joysticks Positions
-  dataPackagesUpdate();
+
+  //dataPackagesUpdate();
   //dataPackagesPrint();
 }

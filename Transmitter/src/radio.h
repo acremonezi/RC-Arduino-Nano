@@ -2,9 +2,6 @@
 
     #define RADIO_H
 
-    // Radio Initialization
-    void radioInit();
-
     // Radio Setup
     void radioSetup();
 

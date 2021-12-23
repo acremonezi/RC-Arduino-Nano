@@ -3,7 +3,7 @@
 #include "pinSetup.h"       // Pin I/O Mode Setup
 #include "radio.h"          // Radio Setup
 //#include "joysticks.h"  // Read Joysticks Positions
-#include "dataPackages.h"
+//#include "dataPackages.h"
 
 #include <SPI.h>
 #include <RF24.h>
@@ -12,25 +12,19 @@
 // Radio on SPI bus (CE, CSN)
 RF24 radio(radioCE, radioCSN);
 
-
 // Radio Address
-const byte addresses[][6] = {"00001", "00002"};
-
-
-
-// Radio Initialization
-void radioInit() {
-  // null....
-}
+const byte addresses[][6] = {"00001", "00002"}; // Bidiretional
 
 // Radio Setup
 void radioSetup() {
-
-    //Serial.begin(9600);         // Start Serial Communication  
+ 
     radio.begin();
-    radio.openWritingPipe(addresses[1]);    // 00002
-    radio.openReadingPipe(1, addresses[0]); // 00001
+    radio.openWritingPipe(addresses[1]);    // 00002 Bidiretional
+    radio.openReadingPipe(1, addresses[0]); // 00001 Bidiretional
     radio.setPALevel(RF24_PA_MIN);
+    
+    //radio.openWritingPipe(address);
+    //radio.stopListening();
 
 }
 
@@ -58,9 +52,22 @@ void radioRun() {
 // Radio Test
 void radioTest() {
 
-    const char text[] = "Hello World !!!";
-    radio.write(&text, sizeof(text));
-    delay(1000);
-    //Serial.println(text);
+    delay(5);
+    radio.stopListening();
+
+      const char textTransmitter[] = "PIng from Transmitter !!!";
+      radio.write(&textTransmitter, sizeof(textTransmitter));
+      delay(5);
+
+
+    delay(5);
+    radio.startListening();
+
+      if ( radio.available() ) {
+        char textReceiver[32] = "";
+        radio.read(&textReceiver, sizeof(textReceiver));
+        Serial.println(textReceiver);
+        delay(500);
+      }
 
 }
