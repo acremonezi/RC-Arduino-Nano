@@ -2,8 +2,8 @@
 #include "pinMap.h"         // Pin Map Setup
 #include "pinSetup.h"       // Pin I/O Mode Setup
 #include "radio.h"          // Radio Setup
-//#include "joysticks.h"  // Read Joysticks Positions
-//#include "dataPackages.h"
+#include "joysticks.h"      // Read Joysticks Positions
+#include "dataPackages.h"
 
 #include <SPI.h>
 #include <RF24.h>
@@ -22,9 +22,6 @@ void radioSetup() {
     radio.openWritingPipe(addresses[1]);    // 00002 Bidiretional
     radio.openReadingPipe(1, addresses[0]); // 00001 Bidiretional
     radio.setPALevel(RF24_PA_MIN);
-    
-    //radio.openWritingPipe(address);
-    //radio.stopListening();
 
 }
 
@@ -34,6 +31,13 @@ void radioRun() {
   // Send Data
   delay(5);
   radio.stopListening();
+
+      char textTest2[] = "Test OK!";
+      const char textTransmitter[] = textTest2;
+      
+      ///radio.write(&textTransmitter, sizeof(textTransmitter));
+      ///delay(5);
+
   //radio.write(&TransmitterDataPackage, sizeof(TransmitterDataPackage));
   //Serial.print(TransmitterDataPackage.Joystick1yValue);
   //Serial.println(TransmitterDataPackage.Joystick2xValue);

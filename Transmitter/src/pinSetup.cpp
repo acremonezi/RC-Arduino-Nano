@@ -6,15 +6,19 @@
 
 void pinSetup() {
 
-    pinMode(Joystick1x, INPUT);
-    pinMode(Joystick1y, INPUT);
-    pinMode(Joystick2x, INPUT);
-    pinMode(Joystick2y, INPUT);
+    // Define the Analog Inputs
+    // ----------------------------------------------
+    pinMode(Joystick1x, INPUT);                 // Joystick 1 eixo X
+    pinMode(Joystick1y, INPUT);                 // Joystick 1 eixo Y
+    pinMode(Joystick2x, INPUT);                 // Joystick 2 eixo X
+    pinMode(Joystick2y, INPUT);                 // Joystick 2 eixo Y
 
-    //pinMode(Toggle1, INPUT_PULLUP);
+    // Define the Digital Inputs
+    // ----------------------------------------------
+    //pinMode(Joystick1Button, INPUT_PULLUP);     // Joystick1 Button
+    //pinMode(Joystick1Button, INPUT_PULLUP);     // Joystick2 Button
   
-    //pinMode(Button1, INPUT_PULLUP);
-
-    //pinMode(Led1, OUTPUT);
+    // Define the Digital Outputs
+    // ----------------------------------------------
 
 }

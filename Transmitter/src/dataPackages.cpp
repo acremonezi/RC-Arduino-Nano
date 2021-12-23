@@ -4,22 +4,31 @@
 #include "joysticks.h"    // Joysticks Positions
 #include "dataPackages.h"
 
- // Max size of this struct is 32 bytes - NRF24L01 buffer limit
-    struct TransmitterData {
-        // Joystics
-        byte Joystick1xValueMapped;
-        byte Joystick1yValueMapped;
-        byte Joystick2xValueMapped;
-        byte Joystick2yValueMapped;
-    };
-    TransmitterData TransmitterDataPackage; //Create a variable with the above structure
 
-    struct ReceiverData {
-    // null...
-    };
-    ReceiverData ReceiverDataPackage; //Create a variable with the above structure
+char textTest[] = "Test OK!";
+
+// Create DataPackage to Transmit Data
+// Max size of this struct is 32 bytes, NRF24L01 buffer limit.
+struct TransmitterData {
+  // Joystics
+  byte Joystick1xValueMapped;
+  byte Joystick1yValueMapped;
+  byte Joystick2xValueMapped;
+  byte Joystick2yValueMapped;
+};
+//Create a variable with the above structure
+TransmitterData TransmitterDataPackage;
+
+// Create DataPackage to Receive Data
+// Max size of this struct is 32 bytes, NRF24L01 buffer limit.
+struct ReceiverData {
+  // null...
+};
+//Create a variable with the above structure
+ReceiverData ReceiverDataPackage;
 
 
+// Update Data Packages:
 void dataPackagesUpdate() {
   TransmitterDataPackage.Joystick1xValueMapped = Joystick1xValueMapped;
   TransmitterDataPackage.Joystick1yValueMapped = Joystick1yValueMapped;
@@ -27,7 +36,7 @@ void dataPackagesUpdate() {
   TransmitterDataPackage.Joystick2yValueMapped = Joystick2yValueMapped;
 }
 
-
+// Print Data Packages Content:
 void dataPackagesPrint() {
 
   Serial.print("J1 -- Yaw  | Thottle -- ");

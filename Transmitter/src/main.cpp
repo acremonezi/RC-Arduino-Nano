@@ -9,7 +9,7 @@ Date: 21/Dec/2021
 #include "pinSetup.h"         // Pin I/O Mode Setup
 #include "joysticks.h"        // Joysticks Info
 #include "radio.h"            // Radio Setup
-//#include "dataPackages.h"
+#include "dataPackages.h"
 
 void setup() {
 
@@ -22,10 +22,10 @@ void setup() {
 void loop() {
 
   joysticksRead();            // Read Joysticks Positions
-  //radioRun();                 // Radio Start
-  radioTest();
-  //joysticksPrint();         // Print Joysticks Positions
+  dataPackagesUpdate();
+  radioRun();                 // Radio Start
 
-  //dataPackagesUpdate();
+  //radioTest();              // Test Radio Communications
+  //joysticksPrint();         // Print Joysticks Positions
   //dataPackagesPrint();
 }
