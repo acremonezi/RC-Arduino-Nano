@@ -28,6 +28,6 @@ void radioComm() {
     //Looking for incoming data
     while(!radio.available());
     // Read Data
-    radio.read(&ReceiverDataPackage, sizeof(TransmitterDataPackage));
+    radio.read(&ReceiverDataPackage, sizeof(ReceiverDataPackage));
 
 }
