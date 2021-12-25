@@ -29,10 +29,9 @@ void loop() {
 
   joysticksRead();            // Read Joysticks Positions
   dataPackagesUpdate();       // Send Input Data to Data Packages
-  dataPackagesPrint();
   radioComm();                // Radio Communication
 
-
+  dataPackagesPrint();
   //testBlink();              // Blink Code
   //radioTest();              // Test Radio Communications
   //joysticksPrint();         // Print Joysticks Positions
