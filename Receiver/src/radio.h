@@ -6,9 +6,13 @@
     void radioSetup();
 
     // Radio Run
-    void radioRun();
+    void radioComm();
 
     // Radio Test
     void radioTest();
+
+    void dataPackagesPrint();
+
+    void dataPackagesUpdate();
 
 #endif

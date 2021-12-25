@@ -17,6 +17,6 @@
 
     // Define the Digital Inputs
     // ----------------------------------------------
-    #define Button1 4           // Button switch 1
+    #define Button1 3           // Button switch 1
 
 #endif

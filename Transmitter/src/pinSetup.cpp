@@ -1,9 +1,7 @@
-#include <Arduino.h>      // Main Arduino Library
-#include "pinMap.h"       // Pin Map Setup
-#include "pinSetup.h"     // Pin I/O Mode Setup
+
+#include "pinSetup.h"
 
 // Pin I/O Mode Setup
-
 void pinSetup() {
 
     // Define the Analog Inputs
@@ -20,5 +18,6 @@ void pinSetup() {
   
     // Define the Digital Outputs
     // ----------------------------------------------
+    pinMode(LED1, OUTPUT);                       // LED 1
 
 }

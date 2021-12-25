@@ -1,6 +1,12 @@
-#ifndef PINSETUP_H
+#ifndef pinSetup_h
 
-    #define PINSETUP_H
+    #define pinSetup_h
+    
+    #include <Arduino.h>      // Main Arduino Library
+    #include "pinMap.h"       // Pin Map Setup
+
+    // Pin Setup
     void pinSetup();
+
 
 #endif

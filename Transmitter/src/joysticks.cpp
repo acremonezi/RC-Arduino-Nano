@@ -1,19 +1,13 @@
 #include <Arduino.h>          // Main Arduino Library
 #include "pinMap.h"           // Pin Map Setup
 #include "pinSetup.h"         // Pin I/O Mode Setup
-#include "joysticks.h"    // Joysticks Positions
+#include "joysticks.h"        // Joysticks Positions
 
 // Define Global Variables
-int Joystick1xValue = 0;
-int Joystick1yValue = 0;
-int Joystick2xValue = 0;
-int Joystick2yValue = 0;
-
-byte Joystick1xValueMapped = 127;
-byte Joystick1yValueMapped = 127;
-byte Joystick2xValueMapped = 127;
-byte Joystick2yValueMapped = 127;
-
+long Joystick1xValue = 512;
+long Joystick1yValue = 512;
+long Joystick2xValue = 512;
+long Joystick2yValue = 512;
 
 // Read Joysticks Positions
 void joysticksRead() {
@@ -27,24 +21,15 @@ void joysticksRead() {
   // Pitch (Down and Up)
   Joystick2yValue = analogRead(Joystick2y);
 
-  // Yaw (Left and Right)
-  Joystick1xValueMapped = map(Joystick1xValue, 0, 1023, 0, 255);
-  // Thottle (Up and Down)
-  Joystick1yValueMapped = map(Joystick1yValue, 0, 1023, 0, 255);
-  // Roll (Left and Rigt)
-  Joystick2xValueMapped = map(Joystick2xValue, 0, 1023, 0, 255);
-  // Pitch (Down and Up)
-  Joystick2yValueMapped = map(Joystick2yValue, 0, 1023, 0, 255);
-
 }
 
-
+// Reset Joysticks Positions
 void joysticksReset() {
 
-  Joystick1xValue = 127;
-  Joystick1yValue = 127;
-  Joystick2xValue = 127;
-  Joystick2yValue = 127;
+  Joystick1xValue = 512;
+  Joystick1yValue = 512;
+  Joystick2xValue = 512;
+  Joystick2yValue = 512;
 
 }
 
@@ -58,9 +43,9 @@ void joysticksPrint() {
   Serial.print(Joystick1yValue);
 
   Serial.print(" -- Xm: ");
-  Serial.print(Joystick1xValueMapped);
+  Serial.print(Joystick1xValue);
   Serial.print(" | Ym: ");
-  Serial.println(Joystick1yValueMapped);
+  Serial.println(Joystick1yValue);
 
   Serial.print("J2 -- Roll | Pitch   -- ");
   Serial.print("X: ");
@@ -69,9 +54,9 @@ void joysticksPrint() {
   Serial.print(Joystick2yValue);
 
   Serial.print(" -- Xm: ");
-  Serial.print(Joystick2xValueMapped);
+  Serial.print(Joystick2xValue);
   Serial.print(" | Ym: ");
-  Serial.println(Joystick2yValueMapped);
+  Serial.println(Joystick2yValue);
 
   delay(500);
 

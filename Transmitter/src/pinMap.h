@@ -1,6 +1,8 @@
-#ifndef PINMAP_H
+#ifndef pinMap_h
 
-    #define PINMAP_H
+    #define pinMap_h
+    
+    // Pin Map Setup
     void pinMap();
 
     // Define Radio on SPI bus (CE, CSN)
@@ -15,18 +17,19 @@
     #define Joystick2x      A2       // Joystick 2 eixo X
     #define Joystick2y      A3       // Joystick 2 eixo Y
 
-/*     // Define the Digital Inputs
+    // Define the Digital Inputs
     // ----------------------------------------------
-    #define Joystick1Button 2       // Joystick1 Button
-    #define Joystick2Button 3       // Joystick1 Button
-    #define Potentiometer1  A4      // Potentiometer 1
+    //#define Joystick1Button 2       // Joystick1 Button
+    //#define Joystick2Button 3       // Joystick1 Button
+    //#define Potentiometer1  A4      // Potentiometer 1
 
-    #define Toggle1         8       // Toggle switch 1
+    //#define Toggle1         8       // Toggle switch 1
 
     // Define the Digital Outputs
     // ----------------------------------------------
-    #define Buzzer          4       // Buzzer
-    #define Led1            5       // LED 1
-*/
+    #define LED1            2       // LED 1
+    //#define Buzzer          4       // Buzzer
+    //#define Led1            5       // LED 1
+
 
 #endif

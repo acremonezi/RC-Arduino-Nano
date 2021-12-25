@@ -1,4 +1,4 @@
-#include <Arduino.h>          // Main Arduino Library
+/* #include <Arduino.h>          // Main Arduino Library
 #include "display.h"
 #include <SPI.h>
 #include <Wire.h>             // I2C Communication
@@ -59,3 +59,4 @@ void displaySetup() {
 }
 
 
+ */

@@ -1,17 +1,12 @@
-#ifndef JOYSTICKS_H
+#ifndef joysticks_h
 
-    #define JOYSTICKS_H
+    #define joysticks_h
 
     // Define Global Variables
-    extern int Joystick1xValue;
-    extern int Joystick1yValue;
-    extern int Joystick2xValue;
-    extern int Joystick2yValue;
-
-    extern byte Joystick1xValueMapped;
-    extern byte Joystick1yValueMapped;
-    extern byte Joystick2xValueMapped;
-    extern byte Joystick2yValueMapped;
+    extern long Joystick1xValue;
+    extern long Joystick1yValue;
+    extern long Joystick2xValue;
+    extern long Joystick2yValue;
 
     // Read Joysticks Positions
     void joysticksRead();

@@ -1,14 +1,8 @@
-#ifndef RADIO_H
+#ifndef radio_h
 
-    #define RADIO_H
-
-    // Radio Setup
-    void radioSetup();
+    #define radio_h
 
     // Radio Run
-    void radioRun();
-
-    // Radio Test
-    void radioTest();
+    void radioComm();
 
 #endif
