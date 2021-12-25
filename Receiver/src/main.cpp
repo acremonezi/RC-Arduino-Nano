@@ -22,8 +22,7 @@ void setup() {
 
 void loop() {
 
-  //radioRun();             // Radio Start
-  //radioTest();
+   //radioTest();
   digitalInputsRead();
   dataPackagesUpdate();
   radioComm();
