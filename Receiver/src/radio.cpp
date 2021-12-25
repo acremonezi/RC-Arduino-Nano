@@ -109,7 +109,7 @@ void dataPackagesPrint() {
 // Radio Communication
 void radioComm() {
 
-    delay(5);
+    //delay(5);
     // Set radio to RX mode
     radio.startListening();
 
@@ -118,7 +118,7 @@ void radioComm() {
 
         // Read Data
         radio.read(&TransmitterDataPackage, sizeof(TransmitterDataPackage));
-        delay(5);
+        //delay(5);
 
         // Set radio to TX mode 
         radio.stopListening();

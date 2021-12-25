@@ -16,12 +16,12 @@
 // Radio Communication
 void radioComm() {
  
-    delay(5);
+    //delay(5);
     // Set radio to TX mode
     radio.stopListening();
     // Send Data
     radio.write(&TransmitterDataPackage, sizeof(TransmitterDataPackage));
-    delay(5);
+    //delay(5);
 
     // Set radio to RX mode
     radio.startListening();
