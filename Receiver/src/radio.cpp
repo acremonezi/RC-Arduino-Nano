@@ -3,7 +3,7 @@
 #include "pinSetup.h"     // Pin I/O Mode Setup
 #include "radio.h"        // Radio Setup
 
-#include "digitalInputs.h"
+#include "inputs.h"
 
 #include <SPI.h>
 #include <RF24.h>

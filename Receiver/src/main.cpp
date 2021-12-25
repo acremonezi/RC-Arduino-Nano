@@ -8,7 +8,7 @@ Date: 21/Dec/2021
 #include "pinMap.h"       // Pin Map Setup
 #include "pinSetup.h"     // Pin I/O Mode Setup
 #include "radio.h"        // Radio Setup
-#include "digitalInputs.h"
+#include "inputs.h"
 
 // Radio Receiver
 
@@ -23,7 +23,7 @@ void setup() {
 void loop() {
 
    //radioTest();
-  digitalInputsRead();
+  inputsRead();
   dataPackagesUpdate();
   radioComm();
   dataPackagesPrint();
