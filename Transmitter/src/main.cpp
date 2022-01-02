@@ -19,7 +19,7 @@ Author: Alcides Cremonezi
 
 void setup() {
 
-  Serial.begin(9600);         // Start Serial Communication  
+  // Serial.begin(9600);         // Start Serial Communication  
   pinSettings();              // Pin Settings Setup
   radioSettings();            // Radio Settings Setup
 
