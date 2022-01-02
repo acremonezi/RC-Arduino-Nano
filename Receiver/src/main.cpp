@@ -9,6 +9,8 @@ Date: 21/Dec/2021
 #include "pinSetup.h"     // Pin I/O Mode Setup
 #include "radio.h"        // Radio Setup
 #include "inputs.h"
+#include "output.h"
+#include "batery.h"       // Batery Voltage Read
 
 // Radio Receiver
 
@@ -24,6 +26,7 @@ void loop() {
 
    //radioTest();
   inputsRead();
+  outputUpdate();
   dataPackagesUpdate();
   radioComm();
   dataPackagesPrint();

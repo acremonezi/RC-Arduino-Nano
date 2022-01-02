@@ -1,23 +1,54 @@
 #include <Arduino.h>            // Main Arduino Library
-#include "pinMap.h"             // Pin Map Setup
-#include "pinSetup.h"           // Pin I/O Mode Setup
+#include "pinSettings.h"        // Pin Settings Setup
 #include "joysticks.h"          // Joysticks Positions
 
-#include "dataPackages.h"
+#include "dataPackages.h"       // Data Package Communication
+
 
 // Create Instances of the Data Structures
 TransmitterDataStructure TransmitterDataPackage;
 ReceiverDataStructure ReceiverDataPackage;
 
 
+// Receiver Variables
+bool receiverPongValueReceived = 0;
+
+
 // Update Data Packages:
 void dataPackagesUpdate() {
-  TransmitterDataPackage.Joystick1xValue = long(Joystick1xValue);
-  TransmitterDataPackage.Joystick1yValue = long(Joystick1yValue);
-  TransmitterDataPackage.Joystick2xValue = long(Joystick2xValue);
-  TransmitterDataPackage.Joystick2yValue = long(Joystick2yValue);
+
+  // Update Data to send to Receiver
+
+    // Handshake
+    TransmitterDataPackage.transmitterPingValue = 1;
+
+    // Joystics    
+    TransmitterDataPackage.joystick1xValue = joystick1xValue;
+    TransmitterDataPackage.joystick1yValue = joystick1yValue;
+    TransmitterDataPackage.joystick2xValue = joystick2xValue;
+    TransmitterDataPackage.joystick2yValue = joystick2yValue;
+    
+  // Updata Data Received from Receiver
+
+    // Handshake
+    receiverPongValueReceived = ReceiverDataPackage.receiverPongValue;
+    //handshakeOutput();
+
 }
 
+
+// Handshake Output Status
+void handshakeOutput() {
+
+    if (receiverPongValueReceived) {
+      digitalWrite(led1, 1);
+      receiverPongValueReceived = 0;
+    } else {
+      receiverPongValueReceived = 0;
+      digitalWrite(led1, 0);
+    }
+  
+}
 
 
 // Print Data Packages Content:
@@ -25,20 +56,18 @@ void dataPackagesPrint() {
 
   Serial.print("J1 -- Yaw  | Thottle -- ");
   Serial.print("X: ");
-  Serial.print(TransmitterDataPackage.Joystick1xValue);
+  Serial.print(TransmitterDataPackage.joystick1xValue);
   Serial.print(" | Y: ");
-  Serial.println(TransmitterDataPackage.Joystick1yValue);
+  Serial.println(TransmitterDataPackage.joystick1yValue);
 
   Serial.print("J2 -- Roll | Pitch   -- ");
   Serial.print("X: ");
-  Serial.print(TransmitterDataPackage.Joystick2xValue);
+  Serial.print(TransmitterDataPackage.joystick2xValue);
   Serial.print(" | Y: ");
-  Serial.println(TransmitterDataPackage.Joystick2yValue);
+  Serial.println(TransmitterDataPackage.joystick2yValue);
 
   Serial.print("Receiver --  ");
-  Serial.print("BT1: ");
-  Serial.print(ReceiverDataPackage.BT1);
-  Serial.print(" | BT2: ");
-  Serial.println(ReceiverDataPackage.BT2);
+  Serial.print("Pong: ");
+  Serial.println(ReceiverDataPackage.receiverPongValue);
   delay(1000);
 } 

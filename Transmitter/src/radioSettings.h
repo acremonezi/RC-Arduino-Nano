@@ -7,10 +7,8 @@
     // because it was the only way I found to extern the
     // "RF24 radio" instance of the Library RF24 bellow.
 
-    #include <Arduino.h>        // Main Arduino Library
-    #include "pinMap.h"         // Pin Map Setup
-    #include "pinSetup.h"       // Pin I/O Mode Setup
-    #include "radioSetup.h"     // Radio Setup
+    #include <Arduino.h>            // Main Arduino Library
+    #include "pinSettings.h"        // Pin Settings Setup
     
     #include <SPI.h>
     #include <RF24.h>
@@ -22,8 +20,8 @@
     // Radio Address
     extern const byte addresses[][6];
 
-    // Radio Setup
-    void radioSetup();
+    // Radio Settings Setup
+    void radioSettings();
 
     // Radio Test
     void radioTest();

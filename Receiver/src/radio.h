@@ -2,6 +2,11 @@
 
     #define RADIO_H
 
+    extern int joystick1xValueReceived;
+    extern int joystick1yValueReceived;
+    extern int joystick2xValueReceived;
+    extern int joystick2yValueReceived;
+
     // Radio Setup
     void radioSetup();
 
@@ -14,5 +19,8 @@
     void dataPackagesPrint();
 
     void dataPackagesUpdate();
+
+    // Handshake Output Status on LED1
+    void handshakeOutput();
 
 #endif

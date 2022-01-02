@@ -20,19 +20,22 @@ Author: Alcides Cremonezi
 void setup() {
 
   Serial.begin(9600);         // Start Serial Communication  
-  pinSetup();                 // Pin I/O Mode Setup
-  radioSetup();               // Radio Setup
+  pinSettings();              // Pin Settings Setup
+  radioSettings();            // Radio Settings Setup
 
 }
 
 void loop() {
 
-  joysticksRead();            // Read Joysticks Positions
-  dataPackagesUpdate();       // Send Input Data to Data Packages
-  radioComm();                // Radio Communication
+  // Main Functions
+    joysticksRead();            // Read Joysticks Positions
+    dataPackagesUpdate();       // Send Input Data to Data Packages
+    radioCommRun();             // Run Radio Communication
 
-  dataPackagesPrint();
-  //testBlink();              // Blink Code
-  //radioTest();              // Test Radio Communications
-  //joysticksPrint();         // Print Joysticks Positions
+  // Debug Functions
+    //dataPackagesPrint();        // Print Data Packages Data
+    //joysticksPrint();         // Print Joysticks Data
+    //testBlink();              // Blink Code
+    //radioTest();              // Test Radio Communications
+    //joysticksPrint();         // Print Joysticks Positions
 }

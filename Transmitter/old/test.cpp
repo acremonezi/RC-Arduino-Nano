@@ -1,12 +1,12 @@
 #include "test.h"         // Test Codes
 
-// Simple Blink for LED_BUILTIN.
+// Simple Blink for LED.
 void testBlink() {  
    
-  digitalWrite(LED1, HIGH);   
+  digitalWrite(led1, HIGH);   
   delay(1000);                       
                  
-  digitalWrite(LED1, LOW);
+  digitalWrite(led1, LOW);
   delay(1000);  
 
 }

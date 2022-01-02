@@ -2,7 +2,7 @@
 
     #define radio_h
 
-    // Radio Run
-    void radioComm();
+    // Run Radio Communication
+    void radioCommRun();
 
 #endif

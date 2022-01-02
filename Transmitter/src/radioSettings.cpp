@@ -1,4 +1,4 @@
-#include "radioSetup.h"
+#include "radioSettings.h"      // Radio Settings Setup
 
 //Radio on SPI bus (CE, CSN)
 RF24 radio(radioCE, radioCSN);
@@ -6,9 +6,8 @@ RF24 radio(radioCE, radioCSN);
 // Radio Address
 const byte addresses[][6] = {"00001", "00002"};     // Bidiretional
 
-
 // Radio Setup
-void radioSetup() {
+void radioSettings() {
  
     radio.begin();
     radio.openWritingPipe(addresses[1]);            // 00002 Direction

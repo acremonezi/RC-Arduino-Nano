@@ -8,24 +8,29 @@
     // Create Transmitter Data Structure
         struct TransmitterDataStructure {
 
+        // Handshake
+        bool transmitterPingValue;
+
         // Joystics
-        long Joystick1xValue;
-        long Joystick1yValue;
-        long Joystick2xValue;
-        long Joystick2yValue;
+        int joystick1xValue;
+        int joystick1yValue;
+        int joystick2xValue;
+        int joystick2yValue;
 
         };
 
     // Expose a Instance of the Structure
         extern TransmitterDataStructure TransmitterDataPackage;
 
+
     // ---------------------------------------------
+
 
     // Create Receiver Data Structure
         struct ReceiverDataStructure {
-
-        bool BT1;
-        bool BT2;
+        
+        // Handshake
+        bool receiverPongValue;
                 
         };
             
@@ -38,5 +43,8 @@
     
     // Data Packages Data Print
     void dataPackagesPrint();
+    
+    // Handshake Output Status
+    void handshakeOutput();
 
 #endif

@@ -27,14 +27,15 @@ void radioSetup() {
 }
 
 // Transmitter Variables
-long Joystick1xValueReceived;
-long Joystick1yValueReceived;
-long Joystick2xValueReceived;
-long Joystick2yValueReceived;
+bool transmitterPingValueReceived;
+int joystick1xValueReceived;
+int joystick1yValueReceived;
+int joystick2xValueReceived;
+int joystick2yValueReceived;
+
 
 // Receiver Variables
-bool BT1;
-bool BT2;
+bool receiverPongValue;
 
 
 // Create Data Structures:
@@ -43,11 +44,14 @@ bool BT2;
   // Create Transmitter Data Structure
     struct TransmitterDataStructure {
 
-      // Joystics
-      long Joystick1xValue;
-      long Joystick1yValue;
-      long Joystick2xValue;
-      long Joystick2yValue;
+        // Handshake
+        bool transmitterPingValue;
+
+        // Joystics
+        int joystick1xValue;
+        int joystick1yValue;
+        int joystick2xValue;
+        int joystick2yValue;
 
     };
 
@@ -59,8 +63,8 @@ bool BT2;
   // Create Receiver Data Structure
     struct ReceiverDataStructure {
 
-      bool BT1;
-      bool BT2;
+        // Handshake
+        bool receiverPongValue;
             
     };
         
@@ -72,33 +76,57 @@ bool BT2;
 
 void dataPackagesUpdate() {
 
-    Joystick1xValueReceived = TransmitterDataPackage.Joystick1xValue;
-    Joystick1yValueReceived = TransmitterDataPackage.Joystick1yValue;
-    Joystick2xValueReceived = TransmitterDataPackage.Joystick2xValue;
-    Joystick2yValueReceived = TransmitterDataPackage.Joystick2yValue;
-   
-    ReceiverDataPackage.BT1 = Button1State;
-    ReceiverDataPackage.BT2 = 1;
-    
+  // Update Data Received from Transmitter
+
+    // Joystics    
+    joystick1xValueReceived = TransmitterDataPackage.joystick1xValue;
+    joystick1yValueReceived = TransmitterDataPackage.joystick1yValue;
+    joystick2xValueReceived = TransmitterDataPackage.joystick2xValue;
+    joystick2yValueReceived = TransmitterDataPackage.joystick2yValue;
+ 
+    // Handshake
+    transmitterPingValueReceived = TransmitterDataPackage.transmitterPingValue;
+    //handshakeOutput();
+
+  // Update Data to send to Transmitter
+  
+    // Handshake
+    ReceiverDataPackage.receiverPongValue = 1;
+
 }
+
+
+// Handshake Output Status on LED1
+void handshakeOutput() {
+    // Output Handshake Status
+    if (transmitterPingValueReceived) {
+      digitalWrite(led1, 1);
+      transmitterPingValueReceived = 0;
+    } else {
+      transmitterPingValueReceived = 0;
+      digitalWrite(led1, 0);
+    }
+}
+
 
 // Print Data Packages Content:
 void dataPackagesPrint() {
 
   Serial.print("J1 -- Yaw  | Thottle -- ");
   Serial.print("Xm: ");
-  Serial.print(TransmitterDataPackage.Joystick1xValue);
+  Serial.print(TransmitterDataPackage.joystick1xValue);
   Serial.print(" | Ym: ");
-  Serial.println(TransmitterDataPackage.Joystick1yValue);
+  Serial.println(TransmitterDataPackage.joystick1yValue);
 
   Serial.print("J2 -- Roll | Pitch   -- ");
   Serial.print("Xm: ");
-  Serial.print(TransmitterDataPackage.Joystick2xValue);
+  Serial.print(TransmitterDataPackage.joystick2xValue);
   Serial.print(" | Ym: ");
-  Serial.println(TransmitterDataPackage.Joystick2yValue);
+  Serial.println(TransmitterDataPackage.joystick2yValue);
 
-  Serial.print("Button1State: ");
-  Serial.println(Button1State);
+  Serial.print("Transmitter --  ");
+  Serial.print("Ping: ");
+  Serial.println(TransmitterDataPackage.transmitterPingValue);
 
 
   delay(500);
@@ -109,7 +137,7 @@ void dataPackagesPrint() {
 // Radio Communication
 void radioComm() {
 
-    //delay(5);
+    delay(5);
     // Set radio to RX mode
     radio.startListening();
 
@@ -118,7 +146,7 @@ void radioComm() {
 
         // Read Data
         radio.read(&TransmitterDataPackage, sizeof(TransmitterDataPackage));
-        //delay(5);
+        delay(5);
 
         // Set radio to TX mode 
         radio.stopListening();

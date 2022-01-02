@@ -2,17 +2,13 @@
 
     #define main_h
 
-    #include <Arduino.h>          // Main Arduino Library
-    #include "pinMap.h"           // Pin Map Setup
-    #include "pinSetup.h"         // Pin I/O Mode Setup
+    #include <Arduino.h>            // Main Arduino Library
+    #include "pinSettings.h"        // Pin Settings Setup
 
-    #include "test.h"             // Test Codes
+    #include "joysticks.h"          // Joysticks Positions
+    #include "dataPackages.h"       // Data Package Communication
 
-    #include "joysticks.h"        // Joysticks Positions
-
-    #include "radioSetup.h"       // Radio Setup
-    #include "radio.h"            // Radio Communication
-    
-    #include "dataPackages.h"
+    #include "radioSettings.h"      // Radio Settings Setup
+    #include "radio.h"              // Radio Communication
 
 #endif
