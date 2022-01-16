@@ -29,6 +29,6 @@ void loop() {
   outputUpdate();
   dataPackagesUpdate();
   radioComm();
-  dataPackagesPrint();
+  //dataPackagesPrint();
 
 }

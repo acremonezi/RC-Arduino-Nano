@@ -1,6 +1,10 @@
 #ifndef pinSettings_h
 
     #define pinSettings_h
+
+    // Enable DEBUG, Outcomment for live operation.
+    // ----------------------------------------------
+    #define DEBUG
     
     // Define Radio on SPI bus (CE, CSN)
     // ----------------------------------------------

@@ -12,7 +12,13 @@
 
 void outputUpdate() {
 
-    analogWrite(PWM1, map(joystick1yValueReceived, 0, 1023, 0, 255));
-    analogWrite(PWM2, map(joystick1yValueReceived, 0, 1023, 0, 255));
+    int joystick1yValueReceivedMaped = map(joystick1yValueReceived, -512, 512, 0, 255);
+
+    //if ( joystick1yValueReceivedMaped > -5 || joystick1yValueReceivedMaped < 5 ) {
+    //    joystick1yValueReceivedMaped = 0;
+    //}
+
+    analogWrite(PWM1, joystick1yValueReceivedMaped);
+    analogWrite(PWM2, joystick1yValueReceivedMaped);
 
 }

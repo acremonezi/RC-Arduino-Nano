@@ -15,15 +15,22 @@ Author: Alcides Cremonezi
 
 #include "main.h"             // Load Libraries
 
+
 // Radio Transmitter
+
 
 void setup() {
 
-  // Serial.begin(9600);         // Start Serial Communication  
+  // Execute only If DEBUG is enabled in pinSettings.h
+  #ifdef DEBUG
+    Serial.begin(9600);       // Start Serial Communication
+  #endif 
+
   pinSettings();              // Pin Settings Setup
   radioSettings();            // Radio Settings Setup
 
 }
+
 
 void loop() {
 
@@ -32,10 +39,12 @@ void loop() {
     dataPackagesUpdate();       // Send Input Data to Data Packages
     radioCommRun();             // Run Radio Communication
 
-  // Debug Functions
-    //dataPackagesPrint();        // Print Data Packages Data
+  // Execute only If DEBUG is enabled in pinSettings.h
+  #ifdef DEBUG
+    //dataPackagesPrint();      // Print Data Packages Data
     //joysticksPrint();         // Print Joysticks Data
-    //testBlink();              // Blink Code
     //radioTest();              // Test Radio Communications
     //joysticksPrint();         // Print Joysticks Positions
+  #endif 
+
 }
